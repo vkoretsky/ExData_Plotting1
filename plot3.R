@@ -8,7 +8,7 @@ df <- read.table(fileName, header=TRUE, sep=";", na.strings="?")
 ## Filter out the 2 days of interest (2007/02/01 and 02):
 tmp <- rbind(df[df$Date=="1/2/2007",], df[df$Date=="2/2/2007",])
 
-## Conver character to Date and time for Date and Time columns, respectively:
+## Convert character to Date and time for Date and Time columns, respectively:
 sample <- data.frame(
     Date=as.Date(tmp$Date, "%d/%m/%Y"),
     Time=strptime(paste(tmp$Date, tmp$Time, sep=""), "%d/%m/%Y %H:%M:%S"),

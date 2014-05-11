@@ -8,7 +8,7 @@ df <- read.table(fileName, header=TRUE, sep=";", na.strings="?")
 ## Filter out the 2 days of interest (2007/02/01 and 02):
 tmp <- rbind(df[df$Date=="1/2/2007",], df[df$Date=="2/2/2007",])
 
-## Conver character to Date and time for Date and Time columns, respectively:
+## Convert character to Date and time for Date and Time columns, respectively:
 sample <- data.frame(
     Date=as.Date(tmp$Date, "%d/%m/%Y"),
     Time=strptime(paste(tmp$Date, tmp$Time, sep=""), "%d/%m/%Y %H:%M:%S"),
@@ -26,15 +26,15 @@ png("plot4.png")
 
 par(mfrow = c(2,2))
 
-## First graph:
+## First graph (top left):
 plot(sample$Time, sample$GlobalActivePower, pch=".", xlab="", ylab="Global Active Power")
 lines(sample$Time, sample$GlobalActivePower)
 
-## Second graph:
+## Second graph (top right):
 plot(sample$Time, sample$Voltage, pch=".", xlab="datetime", ylab="Voltage")
 lines(sample$Time, sample$Voltage)
 
-## Third graph:
+## Third graph (bottom left):
 plot(sample$Time, sample$SubMetering1, xlab="", ylab="Energy sub metering", pch=".", col="black")
 lines(sample$Time, sample$SubMetering1, col="black")
 lines(sample$Time, sample$SubMetering2, col="red")
@@ -44,7 +44,7 @@ legend("topright", pch="_", bty="n",
        legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
 )
 
-## Fourth graph:
+## Fourth graph (bottom right):
 plot(sample$Time, sample$GlobalReactivePower, pch=".", xlab="datetime", ylab="Global_Reactive_Power")
 lines(sample$Time, sample$GlobalReactivePower)
 
